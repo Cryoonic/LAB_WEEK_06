@@ -1,11 +1,9 @@
 package com.example.lab_week_06
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab_week_06.model.CatBreed
@@ -16,16 +14,21 @@ class MainActivity : AppCompatActivity() {
     private val recyclerView: RecyclerView by lazy {
         findViewById(R.id.recycler_view)
     }
+
     private val catAdapter by lazy {
-        CatAdapter(layoutInflater, GlideImageLoader(this), object: CatAdapter.OnClickListener{
+        CatAdapter(layoutInflater, GlideImageLoader(this), object : CatAdapter.OnClickListener {
             override fun onItemClick(cat: CatModel) = showSelectionDialog(cat)
         })
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = catAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+
         catAdapter.setData(
             listOf(
                 CatModel(
@@ -51,11 +54,17 @@ class MainActivity : AppCompatActivity() {
                 )
             )
         )
+
+
+        val itemTouchHelper = ItemTouchHelper(catAdapter.swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
+
     private fun showSelectionDialog(cat: CatModel) {
         AlertDialog.Builder(this)
             .setTitle("Cat Selected")
             .setMessage("You have selected cat ${cat.name}")
-            .setPositiveButton("OK") { _, _ -> }.show()
+            .setPositiveButton("OK") { _, _ -> }
+            .show()
     }
 }
