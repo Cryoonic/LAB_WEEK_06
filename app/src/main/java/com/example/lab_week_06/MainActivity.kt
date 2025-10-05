@@ -51,9 +51,58 @@ class MainActivity : AppCompatActivity() {
                     "Curious George",
                     "Award winning investigator",
                     "https://cdn2.thecatapi.com/images/bar.jpg"
+                ),
+                CatModel(
+                    Gender.Male,
+                    CatBreed.Bengal,
+                    "Leo",
+                    "Energetic jungle cat",
+                    "https://cdn2.thecatapi.com/images/O3btzLlsO.png"
+                ),
+                CatModel(
+                    Gender.Female,
+                    CatBreed.Persian,
+                    "Misty",
+                    "Calm and elegant",
+                    "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"
+                ),
+                CatModel(
+                    Gender.Male,
+                    CatBreed.Siberian,
+                    "Rocky",
+                    "Loves climbing everywhere",
+                    "https://cdn2.thecatapi.com/images/3bk.jpg"
+                ),
+                CatModel(
+                    Gender.Female,
+                    CatBreed.Sphynx,
+                    "Luna",
+                    "No fur, all love",
+                    "https://cdn2.thecatapi.com/images/BDb8ZXb1v.jpg"
+                ),
+                CatModel(
+                    Gender.Male,
+                    CatBreed.MaineCoon,
+                    "Max", "Gentle giant",
+                    "https://cdn2.thecatapi.com/images/2M8vYd0F1.jpg"
+                ),
+                CatModel(
+                    Gender.Female,
+                    CatBreed.Ragdoll,
+                    "Chloe",
+                    "Sweet and affectionate",
+                    "https://cdn2.thecatapi.com/images/KJF8fB_20.jpg"
+                ),
+                CatModel(
+                    Gender.Male,
+                    CatBreed.ScottishFold,
+                    "Oliver",
+                    "Loves naps and snacks",
+                    "https://cdn2.thecatapi.com/images/6qi.jpg"
                 )
             )
         )
+
 
 
         val itemTouchHelper = ItemTouchHelper(catAdapter.swipeToDeleteCallback)
